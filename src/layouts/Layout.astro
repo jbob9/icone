@@ -1,5 +1,6 @@
 ---
 import "../global.css";
+import Navbar from "./Navbar";
 ---
 
 <!doctype html>
@@ -9,10 +10,13 @@ import "../global.css";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Icone</title>
 	</head>
-	<body>
-		<slot />
+	<body class="font-sans">
+		<div class="min-h-screen">
+			<Navbar />
+			<slot />
+		</div>
 	</body>
 </html>
 
