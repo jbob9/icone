@@ -1,7 +1,10 @@
 ---
 import "../global.css";
 import Navbar from "./Navbar";
+import { Font } from 'astro:assets';
 ---
+
+<Font cssVariable="--font-inter" preload />
 
 <!doctype html>
 <html lang="en">
@@ -12,8 +15,8 @@ import Navbar from "./Navbar";
 		<meta name="generator" content={Astro.generator} />
 		<title>Icone</title>
 	</head>
-	<body class="font-sans">
-		<div class="min-h-screen">
+	<body>
+		<div class="min-h-screen font-sans">
 			<Navbar />
 			<slot />
 		</div>
