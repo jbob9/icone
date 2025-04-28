@@ -1,0 +1,57 @@
+---
+interface Props {
+  label: string;
+  value: string;
+}
+
+const { label, value } = Astro.props;
+const blogs = [
+  {
+    id: "1",
+    title: "The Future of Digital Design",
+    excerpt: "Exploring upcoming trends in digital design and their impact on user experience.",
+    date: "April 15, 2025",
+    category: "Design",
+    imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+  },
+  {
+    id: "2",
+    title: "Innovation in Web Development",
+    excerpt: "New technologies shaping the future of web development and user interactions.",
+    date: "April 10, 2025",
+    category: "Development",
+    imageUrl: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+  },
+  {
+    id: "3",
+    title: "Understanding User Experience",
+    excerpt: "Key principles of UX design and how they influence modern web applications.",
+    date: "April 5, 2025",
+    category: "UX",
+    imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+  },
+];
+---
+
+<div class="min-h-screen bg-background">
+    {/* Hero Section */}
+    <section class="relative py-20 bg-black text-white">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Blog_</h1>
+        <p class="text-lg text-gray-300 max-w-2xl">
+          Insights and perspectives on design, development, and digital innovation
+        </p>
+      </div>
+    </section>
+
+    {/* Blog Grid */}
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogs.map((blog) => (
+            <BlogCard key={blog.id} {...blog} />
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>

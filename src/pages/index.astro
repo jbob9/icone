@@ -1,19 +1,145 @@
 ---
+import Button from '../components/ui/Button.astro';
 import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import StatCard from '../components/StatCard.astro';
 import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 
 ---
 
 <Layout>
 	<div class="min-h-screen">
 		<Hero/>
-      <!-- <Navbar />
-      <Hero />
-      <Stats />
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <SectionTitle>Insights_</SectionTitle>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <StatCard label="Satisfaction Rate" value="99%" />
+          <StatCard label="Happy Clients" value="153+" />
+          <StatCard label="Annual Revenue" value="120M" />
+          <StatCard label="Retention Rate" value="67%" />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-10">
+          <SectionTitle className="mb-0">_Featured Projects</SectionTitle>
+          <Button variant="outline">View All</Button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <ProjectCard 
+            id='1'
+            image="https://images.unsplash.com/photo-1604076913837-52ab5629fba9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+            title="Kontrol Catalog Rebranding"
+            categories={["Branding", "Digital", "Print"]}
+            description="Award-winning rebrand creating effective magazine and digital experience for clients."
+          />
+          <ProjectCard 
+            id='2'
+            image="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80"
+            title="Migret Handball Rebranding"
+            categories={["Digital", "Branding", "Design"]}
+            description="Created a unique basketball brand while allowing brand to grow across digital and print media."
+          />
+          <ProjectCard 
+            id='3'
+            image="https://images.unsplash.com/photo-1586767003402-8ade266deb64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+            title="Virtual Pitch Deck"
+            categories={["Web Design", "Branding", "Design"]}
+            description="Created a marketing campaign focused on social high and mobile-first approach for best results."
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="relative py-24 flex flex-col justify-center" style={{
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }}>
+      <div class="container mx-auto px-4 z-10">
+        <div class="max-w-2xl">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">
+            We believe in forward thinking design_
+          </h2>
+          <p class="text-white mb-10 opacity-90 text-lg">
+            Innovative solutions for any challenges you face
+          </p>
+          <Button className="mt-6">Learn More</Button>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <SectionTitle>Best Innovation_</SectionTitle>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div>
+            <h3 class="font-semibold mb-2">Digital Creative Technology</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              With our advanced design solutions, we enable businesses to reach new heights and success.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Sustainable Growth Strategy</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Through our effective strategies, organizations change to create more innovative outcomes.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Business Revenue Increase</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              By implementing what clients need, we bring big opportunities for our clients now.
+            </p>
+          </div>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg overflow-hidden relative">
+          <div class="md:w-1/2">
+            <h3 class="text-sm opacity-70 mb-3">What it means to work with us</h3>
+            <p class="text-lg font-medium mb-6">
+              We don't just create visuals. We create emotions and experiences that will last for years to come.
+            </p>
+            <p class="text-2xl md:text-3xl font-bold mb-8">
+              Innovative solutions for any challenges you face
+            </p>
+            <Button>Learn More</Button>
+          </div>
+          <div class="absolute right-0 bottom-0 hidden md:block">
+            <img 
+              src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+              alt="Team collaboration" 
+              class="max-w-xs"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  
+      <!-- <Stats />
       <Projects />
       <Services />
       <Team />
       <Testimonials />
       <Footer /> -->
-    </div>v
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <div class="flex justify-between items-center mb-10">
+            <SectionTitle className="mb-0">_Latest Posts</SectionTitle>
+            <Button variant="outline">View All</Button>
+          </div>
+          
+        </div>
+      </section>
+      <section class="py-16 bg-black text-white text-center">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl md:text-4xl font-bold mb-8">Book free Consulting</h2>
+          <Button variant='outline' className="bg-white text-black hover:bg-gray-100">Get In Touch</Button>
+        </div>
+      </section>
+    </div>
 </Layout>
