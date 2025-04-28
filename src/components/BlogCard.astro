@@ -1,6 +1,9 @@
 ---
 import Badge from './ui/Badge.astro';
 import Card from './ui/Card.astro';
+import CardDescription from './ui/CardDescription.astro';
+import CardHeader from './ui/CardHeader.astro';
+import CardTitle from './ui/CardTitle.astro';
 
 interface Props {
     id: string;
@@ -28,7 +31,7 @@ const { id, title, excerpt, date, category, imageUrl } = Astro.props;
           <Badge>{category}</Badge>
           <span class="text-sm text-muted-foreground">{date}</span>
         </div>
-        <CardTitle class="text-xl mb-2">{title}</CardTitle>
+        <CardTitle className="text-xl mb-2">{title}</CardTitle>
         <CardDescription>{excerpt}</CardDescription>
       </CardHeader>
     </Card>

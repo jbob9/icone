@@ -1,10 +1,7 @@
 ---
-interface Props {
-  label: string;
-  value: string;
-}
+import BlogCard from '../components/BlogCard.astro';
+import Layout from '../layouts/Layout.astro';
 
-const { label, value } = Astro.props;
 const blogs = [
   {
     id: "1",
@@ -33,7 +30,8 @@ const blogs = [
 ];
 ---
 
-<div class="min-h-screen bg-background">
+
+<Layout>
     {/* Hero Section */}
     <section class="relative py-20 bg-black text-white">
       <div class="container mx-auto px-4">
@@ -49,9 +47,9 @@ const blogs = [
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog) => (
-            <BlogCard key={blog.id} {...blog} />
+            <BlogCard  {...blog} />
           ))}
         </div>
       </div>
     </section>
-  </div>
+</Layout>
