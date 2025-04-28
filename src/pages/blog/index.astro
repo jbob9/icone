@@ -1,6 +1,6 @@
 ---
-import BlogCard from '../components/BlogCard.astro';
-import Layout from '../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import Layout from '../../layouts/Layout.astro';
 
 const blogs = [
   {
@@ -43,7 +43,7 @@ const blogs = [
     </section>
 
     {/* Blog Grid */}
-    <section class="py-16">
+    <section class="pt-16 pb-44">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog) => (

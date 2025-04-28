@@ -18,21 +18,21 @@ const { id, title, excerpt, date, category, imageUrl } = Astro.props;
 ---
 
 <a href={`/blog/${id}`} class="block hover:opacity-90 transition-opacity">
-    <Card>
-      <div class="aspect-[16/9] relative overflow-hidden rounded-t-lg">
-        <img
-          src={imageUrl}
-          alt={title}
-          class="object-cover w-full h-full"
-        />
+  <Card className='border-gray-300'>
+    <div class="aspect-[16/9] relative overflow-hidden rounded-t-lg">
+      <img
+        src={imageUrl}
+        alt={title}
+        class="object-cover w-full h-full"
+      />
+    </div>
+    <CardHeader>
+      <div class="flex justify-between items-center mb-2">
+        <Badge>{category}</Badge>
+        <span class="text-sm text-muted-foreground">{date}</span>
       </div>
-      <CardHeader>
-        <div class="flex justify-between items-center mb-2">
-          <Badge>{category}</Badge>
-          <span class="text-sm text-muted-foreground">{date}</span>
-        </div>
-        <CardTitle className="text-xl mb-2">{title}</CardTitle>
-        <CardDescription>{excerpt}</CardDescription>
-      </CardHeader>
-    </Card>
+      <CardTitle className="text-xl mb-2">{title}</CardTitle>
+      <CardDescription>{excerpt}</CardDescription>
+    </CardHeader>
+  </Card>
 </a>
