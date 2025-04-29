@@ -26,13 +26,13 @@ const { id, title, excerpt, date, category, imageUrl } = Astro.props;
           class="object-cover w-full h-full"
         />
       </div>
-      <CardHeader>
+      <div>
         <div class="flex justify-between items-center mb-2">
           <Badge>{category}</Badge>
           <span class="text-sm text-muted-foreground">{date}</span>
         </div>
         <CardTitle className="text-xl mb-2">{title}</CardTitle>
         <CardDescription>{excerpt}</CardDescription>
-      </CardHeader>
+      </div>
     </Card>
 </a>
