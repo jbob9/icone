@@ -8,12 +8,9 @@ const Navbar = () => {
     <nav className="fixed w-full top-0 bg-darkBg/80 backdrop-blur-md z-50">
       <div className="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
         <div className="flex items-center">
-          <div className="flex items-center space-x-2">
-            <div className="h-8 w-8 bg-neon rounded-full flex items-center justify-center">
-              <span className="text-darkBg text-sm font-bold">MS</span>
-            </div>
-            <span className="font-semibold text-white">MultiStudio</span>
-          </div>
+          <a href="/" >
+            <span className="font-semibold text-white">Icone</span>
+          </a>
         </div>
         
         {/* Desktop Menu */}
