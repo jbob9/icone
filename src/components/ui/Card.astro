@@ -5,14 +5,13 @@ interface Props {
   className?: string;
 }
 
-const { className, ...props } = Astro.props;
+const { className } = Astro.props;
 ---
 
-<div
-    class={cn(
+<div class={cn(
       "rounded-lg border bg-[hsl(0,0%,100%)] text-[hsl(222.2,84%,4.9%)] shadow-sm",
       className
     )}
-  />
+  >
   <slot />
 </div>

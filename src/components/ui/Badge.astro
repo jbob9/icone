@@ -13,7 +13,7 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+          "border-transparent bg-[hsl(222.2,47.4%,11.2%)] text-[hsl(210,40%,98%)] hover:bg-[hls(222.2,47.4%,11.2%)]/80",
         secondary:
           "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
         destructive:
@@ -27,7 +27,7 @@ const badgeVariants = cva(
   }
 )
 
-const { className, variant, ...props } = Astro.props;
+const { className, variant } = Astro.props;
 ---
 
 <div class={cn(badgeVariants({ variant }), className)}><slot/></div>
