@@ -2,7 +2,8 @@
 import { Font } from 'astro:assets';
 import "../global.css";
 import Footer from "./Footer.astro";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
+import Navbar2 from './Navbar2';
 ---
 
 <Font cssVariable="--font-inter" preload />
@@ -18,7 +19,7 @@ import Navbar from "./Navbar";
 	</head>
 	<body>
 		<div class="min-h-screen font-sans">
-			<Navbar />
+			<Navbar2 />
 			<slot />
 			<Footer />
 		</div>

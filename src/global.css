@@ -7,3 +7,19 @@
 .btn-primary {
   @apply bg-[#c3fd5d] text-[#1A1F2C] font-medium py-2 px-4 rounded-full hover:opacity-90 transition-opacity;
 }
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
