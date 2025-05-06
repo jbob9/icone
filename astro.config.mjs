@@ -4,6 +4,8 @@ import sanity from "@sanity/astro";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from 'astro/config';
 
+import vercel from "@astrojs/vercel";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -16,6 +18,7 @@ export default defineConfig({
     }),
     react()
   ],
+
   experimental: {
     fonts: [{
         provider: fontProviders.google(),
@@ -23,7 +26,9 @@ export default defineConfig({
         cssVariable: "--font-inter"
     }]
   },
+
   vite: {
     plugins: [tailwindcss()],
   },
+  adapter: vercel(),
 });
