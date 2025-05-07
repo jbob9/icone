@@ -1,32 +1,29 @@
-// @ts-check
 import react from "@astrojs/react";
 import sanity from "@sanity/astro";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, fontProviders } from 'astro/config';
-
+import { defineConfig, fontProviders } from "astro/config";
 import vercel from "@astrojs/vercel";
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [
     sanity({
-      projectId: 'avd06zyn',
-      dataset: 'production',
+      projectId: "avd06zyn",
+      dataset: "production",
       useCdn: false,
       apiVersion: "2025-04-20",
-      studioBasePath: '/studio'
+      studioBasePath: "/studio",
     }),
-    react()
+    react(),
   ],
-
   experimental: {
-    fonts: [{
+    fonts: [
+      {
         provider: fontProviders.google(),
         name: "Inter",
-        cssVariable: "--font-inter"
-    }]
+        cssVariable: "--font-inter",
+      },
+    ],
   },
-
   vite: {
     plugins: [tailwindcss()],
   },
