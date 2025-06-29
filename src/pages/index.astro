@@ -1,24 +1,23 @@
 ---
-import Button from '../components/ui/Button.astro';
-import Hero from '../components/Hero.astro';
+import Hero2 from '../components/Hero2.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import StatCard from '../components/StatCard.astro';
+import Button, { buttonVariants } from '../components/ui/Button.astro';
 import Layout from '../layouts/Layout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import Hero2 from '../components/Hero2.astro';
 
 ---
 
 <Layout>
 	<div class="min-h-screen">
 		<Hero2/>
-    <section class="py-20 bg-white">
+    <section class="pb-20  bg-white">
       <div class="container mx-auto px-4">
         <SectionTitle>Insights_</SectionTitle>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
           <StatCard label="Satisfaction Rate" value="99%" />
-          <StatCard label="Happy Clients" value="153+" />
-          <StatCard label="Annual Revenue" value="120M" />
+          <StatCard label="Projects" value="5+" />
+          <StatCard label="Happy Clients" value="250+" />
           <StatCard label="Retention Rate" value="67%" />
         </div>
       </div>
@@ -69,7 +68,7 @@ import Hero2 from '../components/Hero2.astro';
           <p class="text-white mb-10 opacity-90 text-lg">
             Innovative solutions for any challenges you face
           </p>
-          <Button className="mt-6">Learn More</Button>
+          <!-- <Button className="mt-6">Learn More</Button> -->
         </div>
       </div>
     </section>
@@ -131,11 +130,12 @@ import Hero2 from '../components/Hero2.astro';
         <div class="container mx-auto px-4">
           <div class="flex justify-between items-center mb-10">
             <SectionTitle className="mb-0">_Latest Posts</SectionTitle>
-            <Button variant="outline">View All</Button>
+            <a href="/blog" class={buttonVariants({ variant: 'outline' })}>View All</a>
           </div>
           
         </div>
       </section>
+      
       <section class="py-16 bg-black text-white text-center">
         <div class="container mx-auto px-4">
           <h2 class="text-3xl md:text-4xl font-bold mb-8">Book free Consulting</h2>

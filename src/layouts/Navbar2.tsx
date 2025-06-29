@@ -1,3 +1,5 @@
+import { MenuIcon } from "lucide-react";
+
 const Navbar2 = () => {
   return (
     <nav className="w-full flex items-center justify-between py-6 px-6 md:px-12 bg-white">
@@ -46,21 +48,7 @@ const Navbar2 = () => {
       <div className="md:hidden">
         <button>
           <span className="sr-only">Open menu</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="4" x2="20" y1="12" y2="12" />
-            <line x1="4" x2="20" y1="6" y2="6" />
-            <line x1="4" x2="20" y1="18" y2="18" />
-          </svg>
+          <MenuIcon />
         </button>
       </div>
     </nav>
