@@ -29,10 +29,10 @@ const { id, title, excerpt, date, category, imageUrl } = Astro.props;
     <CardHeader>
       <div class="flex justify-between items-center mb-2">
         <Badge>{category}</Badge>
-        <span class="text-sm text-muted-foreground">{date}</span>
+        <span class="text-sm text-muted-foreground">{new Date(date).toLocaleDateString('fr-FR')}</span>
       </div>
-      <CardTitle className="text-xl mb-2">{title}</CardTitle>
-      <CardDescription>{excerpt}</CardDescription>
+      <CardTitle className="text-xl mb-2 line-clamp-2">{title}</CardTitle>
+      <CardDescription className='line-clamp-3'>{excerpt}</CardDescription>
     </CardHeader>
   </Card>
 </a>

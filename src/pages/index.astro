@@ -9,8 +9,9 @@ import Button, { buttonVariants } from '../components/ui/Button.astro';
 import Layout from '../layouts/Layout.astro';
 import { loadQuery } from '../sanity/lib/load-query';
 import { urlForImage } from '../sanity/lib/url-for-image';
+import BlogCard from '../components/BlogCard.astro';
 
-const { data: projects } = await loadQuery<(SanityDocument & { name: string; slug: { current: string }; logo: { asset: SanityAsset }; mainImage: { asset: SanityAsset }; overview: string; tags: string[]; status: string; publishedAt: string; })[]>({
+const { data: projects } = await loadQuery<{ name: string; slug: { current: string }; logo: { asset: SanityAsset }; mainImage: { asset: SanityAsset }; overview: string; tags: string[]; status: string; publishedAt: string; }[]>({
     query: `*[_type == "project"] | order(_createdAt asc){
       name,
       slug,
@@ -23,6 +24,16 @@ const { data: projects } = await loadQuery<(SanityDocument & { name: string; slu
     }`,
   });
 
+  const { data: posts } = await loadQuery<{ title: string; slug: { current: string };mainImage: { asset: SanityAsset }; overview: string; categories: { title: string }[]; publishedAt: string; }[]>({
+    query: `*[_type == "post"] | order(_createdAt asc){
+      title,
+      slug,
+      mainImage,
+      overview,
+      categories[]->{ title},
+      publishedAt,
+    }`,
+  });
 
 ---
 
@@ -33,10 +44,10 @@ const { data: projects } = await loadQuery<(SanityDocument & { name: string; slu
       <div class="container mx-auto px-4">
         <SectionTitle>Insights_</SectionTitle>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <StatCard label="Satisfaction Rate" value="99%" />
-          <StatCard label="Projects" value="5+" />
-          <StatCard label="Happy Clients" value="250+" />
-          <StatCard label="Retention Rate" value="67%" />
+          <StatCard label="Taux de satisfaction" value="99%" />
+          <StatCard label="Projets" value="5+" />
+          <StatCard label="Clients satisfaits" value="250+" />
+          <StatCard label="Taux de rétention" value="67%" />
         </div>
       </div>
     </section>
@@ -81,37 +92,37 @@ const { data: projects } = await loadQuery<(SanityDocument & { name: string; slu
 
     <section class="py-20 bg-gray-100" id="innovation">
       <div class="container mx-auto px-4">
-        <SectionTitle>Best Innovation_</SectionTitle>
+        <SectionTitle>Meilleures Innovations_</SectionTitle>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           <div>
-            <h3 class="font-semibold mb-2">Digital Creative Technology</h3>
+            <h3 class="font-semibold mb-2">Technologie digitale créative</h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              With our advanced design solutions, we enable businesses to reach new heights and success.
+              Grâce à nos solutions de conception avancées, nous permettons aux entreprises d’atteindre de nouveaux sommets et de réussir.
             </p>
           </div>
           <div>
-            <h3 class="font-semibold mb-2">Sustainable Growth Strategy</h3>
+            <h3 class="font-semibold mb-2">Stratégie de croissance durable</h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              Through our effective strategies, organizations change to create more innovative outcomes.
+              Grâce à nos stratégies efficaces, les organisations évoluent pour créer des résultats plus innovants.
             </p>
           </div>
           <div>
-            <h3 class="font-semibold mb-2">Business Revenue Increase</h3>
+            <h3 class="font-semibold mb-2">Augmentation des revenus des entreprises</h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              By implementing what clients need, we bring big opportunities for our clients now.
+              En mettant en œuvre ce dont les clients ont besoin, nous leur offrons dès maintenant de grandes opportunités.
             </p>
           </div>
         </div>
         
         <div class="bg-white p-8 rounded-lg overflow-hidden relative">
           <div class="md:w-1/2">
-            <h3 class="text-sm opacity-70 mb-3">What it means to work with us</h3>
+            <h3 class="text-sm opacity-70 mb-3">Ce que signifie travailler avec nous</h3>
             <p class="text-lg font-medium mb-6">
-              We don't just create visuals. We create emotions and experiences that will last for years to come.
+             Nous ne créons pas que des visuels. Nous créons des émotions et des expériences qui dureront des années.
             </p>
             <p class="text-2xl md:text-3xl font-bold mb-8">
-              Innovative solutions for any challenges you face
+             Des solutions innovantes pour tous les défis auxquels vous êtes confrontés
             </p>
             <Button>Learn More</Button>
           </div>
@@ -132,11 +143,24 @@ const { data: projects } = await loadQuery<(SanityDocument & { name: string; slu
       <Team />
       <Testimonials />
       <Footer /> -->
-      <section class="py-16 bg-gray-50" id="blog"></section>
+      <section class="pt-16 mb-20 bg-gray-50" id="blog">
         <div class="container mx-auto px-4">
           <div class="flex justify-between items-center mb-10">
             <SectionTitle className="mb-0">_Latest Posts</SectionTitle>
             <a href="/blog" class={buttonVariants({ variant: 'outline' })}>View All</a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map((blog) => (
+              <BlogCard 
+                id={blog.slug.current} 
+                imageUrl={urlForImage(blog.mainImage.asset).width(800).format('webp').url()}
+                title={blog.title}
+                category={blog.categories[0]?.title || 'General'}
+                date={blog.publishedAt}
+                excerpt={blog.overview}
+              />
+            ))}
           </div>
           
         </div>
