@@ -17,6 +17,11 @@ export const projectType = defineType({
       },
     }),
     defineField({
+      title: "Website Url",
+      name: "websiteUrl",
+      type: "url",
+    }),
+    defineField({
       name: "logo",
       type: "image",
       options: {
@@ -47,21 +52,63 @@ export const projectType = defineType({
       of: [{ type: "string" }],
     }),
     defineField({
-        title: 'Status',
-        name: 'status',
-        type: 'string',
-        options: {
-          list: [
-            {title: 'Beta', value: 'beta'},
-            {title: 'Alpha', value: 'Alpha'},
-            {title: 'Production', value: 'production'},
-            {title: 'Deprecated', value: 'deprecated'}, 
-            {title: 'Discontinued', value: 'discontinued'},
-            {title: 'Other', value: 'other'},
-          ], // <-- predefined valuess
-          layout: 'radio' // <-- defaults to 'dropdown'
-        }
-      }),
+      title: "Status",
+      name: "status",
+      type: "string",
+      options: {
+        list: [
+          { title: "Beta", value: "beta" },
+          { title: "Alpha", value: "Alpha" },
+          { title: "Production", value: "production" },
+          { title: "Deprecated", value: "deprecated" },
+          { title: "Discontinued", value: "discontinued" },
+          { title: "Other", value: "other" },
+        ], // <-- predefined valuess
+        layout: "radio", // <-- defaults to 'dropdown'
+      },
+    }),
+
+    defineField({
+      title: "Technologies",
+      name: "technologies",
+      type: "array",
+      of: [{ type: "string" }],
+    }),
+    defineField({
+      title: "Challenges",
+      name: "challenges",
+      type: "text",
+    }),
+    defineField({
+      title: "Solutions",
+      name: "solutions",
+      type: "text",
+    }),
+    defineField({
+      title: "Features",
+      name: "features",
+      type: "array",
+      of: [{ type: "string" }],
+    }),
+    defineField({
+      title: "Results",
+      name: "results",
+      type: "array",
+      of: [{ type: "string" }],
+    }),
+    defineField({
+      title: "Gallery",
+      name: "gallery",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+    }),
     defineField({
       name: "publishedAt",
       type: "datetime",

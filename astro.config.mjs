@@ -5,6 +5,7 @@ import { defineConfig, fontProviders } from "astro/config";
 import vercel from "@astrojs/vercel";
 
 export default defineConfig({
+  site: 'https://www.iconeht.com/',
   integrations: [
     sanity({
       projectId: "avd06zyn",
