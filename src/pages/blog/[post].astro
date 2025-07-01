@@ -1,45 +1,48 @@
 ---
+import PortableText from '../../components/PortableText.astro';
 import Badge from '../../components/ui/Badge.astro';
 import Layout from '../../layouts/Layout.astro';
+import { loadQuery } from '../../sanity/lib/load-query';
+import type { Post } from '../../sanity/lib/types';
+import { urlForImage } from '../../sanity/lib/url-for-image';
 
 
 export async function getStaticPaths() {
-  return [
-    // { params: { /* required */ }, props: { /* optional */ } },
-    { params: { post: '1' } }, // [post] is the parameter
-    { params: { post: '2' } }, // must match the file name
-    // ...
-  ];
+  const { data: posts } = await loadQuery<Post[]>({
+    query: `*[_type == "post"]{
+      slug,
+      title,
+      overview,
+      body,
+      mainImage,
+      categories[]->{ title },
+      author->{
+        name,
+        role,
+        image
+      },
+      publishedAt,
+    }`,
+  });
+  return posts.map((post) => ({
+    params: { post: post.slug.current },
+    props: { post} 
+  }));
 }
 
-const post = {
-    id: "1",
-    title: "The Future of Digital Design",
-    content: `
-      The landscape of digital design is constantly evolving, shaped by emerging technologies and changing user expectations. As we move forward, we're seeing several key trends that are likely to define the future of our industry.
+const { post } = Astro.props;
 
-      First and foremost, we're witnessing a shift towards more immersive experiences. Virtual and augmented reality are no longer just gaming technologies - they're becoming integral tools in the designer's toolkit. These technologies allow us to create deeply engaging experiences that blur the line between digital and physical worlds.
-
-      Another significant trend is the rise of adaptive design systems. These sophisticated frameworks can automatically adjust to user preferences and behaviors, creating highly personalized experiences at scale. This approach not only improves user engagement but also streamlines the design process itself.
-
-      Accessibility is also taking center stage. As our digital world becomes more inclusive, designers are placing greater emphasis on creating experiences that work for everyone, regardless of their abilities or circumstances. This isn't just about compliance - it's about building better products that serve all users effectively.
-    `,
-    date: "April 15, 2025",
-    category: "Design",
-    imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-    author: {
-      name: "Sarah Johnson",
-      role: "Senior Designer",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-    },
-  };
 ---
 
-<Layout>
+<Layout
+description={post.overview} 
+title={post.title}
+image={urlForImage(post.mainImage).url()}
+>
       {/* Hero Section */}
-      <div class="relative h-[60vh] overflow-hidden">
+      <div class="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <img 
-          src={post.imageUrl} 
+          src={urlForImage(post.mainImage).format('webp').fit('fill').url()} 
           alt={post.title} 
           class="w-full h-full object-cover"
         />
@@ -55,8 +58,8 @@ const post = {
 
         <article class="max-w-3xl mx-auto">
           <div class="flex items-center gap-4 mb-6">
-            <Badge>{post.category}</Badge>
-            <span class="text-sm text-muted-foreground">{post.date}</span>
+            <Badge>{post.categories[0]?.title}</Badge>
+            <span class="text-sm text-muted-foreground">{new Date(post.publishedAt).toLocaleDateString()}</span>
           </div>
 
           <h1 class="text-4xl md:text-5xl font-bold mb-8">{post.title}</h1>
@@ -64,23 +67,19 @@ const post = {
           {/* Author */}
           <div class="flex items-center gap-4 mb-12 p-4 border rounded-lg">
             <img
-              src={post.author.avatar}
+              src={urlForImage(post.author.image).width(48).height(48).url()}
               alt={post.author.name}
               class="w-12 h-12 rounded-full object-cover"
             />
             <div>
               <h3 class="font-medium">{post.author.name}</h3>
-              <p class="text-sm text-muted-foreground">{post.author.role}</p>
+              <p class="text-sm text-muted-foreground">Ceo of Icone</p>
             </div>
           </div>
 
-          {/* Content */}
+
           <div class="prose prose-lg max-w-none">
-            {post.content.split('\n\n').map((paragraph, index) => (
-              <p  class="mb-6 text-lg leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
+            <PortableText portableText={post.body} />
           </div>
         </article>
       </div>

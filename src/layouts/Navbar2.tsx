@@ -30,10 +30,10 @@ const Navbar2 = () => {
           Projects
         </a>
         <a
-          href="#contact"
+          href="#innovation"
           className="text-sm font-medium hover:text-gray-500 transition-colors"
         >
-          Contact
+          Innovation
         </a>
         <a
           href="#faq"
@@ -41,9 +41,9 @@ const Navbar2 = () => {
         >
           FAQ
         </a>
-        <button className="rounded-full hover:border-gray-500 border border-neutral-600 text-black hover:bg-black/5 p-1.5">
-          Get Started <span className="ml-1">→</span>
-        </button>
+        <a href="/contacts" className="rounded-full hover:border-gray-500 border border-neutral-600 text-black hover:bg-black/5 p-1.5">
+          Contacts <span className="ml-1">→</span>
+        </a>
       </div>
 
       {/* Mobile menu button */}

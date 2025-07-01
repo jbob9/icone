@@ -1,6 +1,5 @@
 ---
-import type { SanityAsset } from '@sanity/image-url/lib/types/types';
-import type { SanityDocument } from 'sanity';
+import BlogCard from '../components/BlogCard.astro';
 import Hero2 from '../components/Hero2.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionTitle from '../components/SectionTitle.astro';
@@ -8,10 +7,10 @@ import StatCard from '../components/StatCard.astro';
 import Button, { buttonVariants } from '../components/ui/Button.astro';
 import Layout from '../layouts/Layout.astro';
 import { loadQuery } from '../sanity/lib/load-query';
+import type { Post, Project } from '../sanity/lib/types';
 import { urlForImage } from '../sanity/lib/url-for-image';
-import BlogCard from '../components/BlogCard.astro';
 
-const { data: projects } = await loadQuery<{ name: string; slug: { current: string }; logo: { asset: SanityAsset }; mainImage: { asset: SanityAsset }; overview: string; tags: string[]; status: string; publishedAt: string; }[]>({
+const { data: projects } = await loadQuery<Project[]>({
     query: `*[_type == "project"] | order(_createdAt asc){
       name,
       slug,
@@ -24,8 +23,8 @@ const { data: projects } = await loadQuery<{ name: string; slug: { current: stri
     }`,
   });
 
-  const { data: posts } = await loadQuery<{ title: string; slug: { current: string };mainImage: { asset: SanityAsset }; overview: string; categories: { title: string }[]; publishedAt: string; }[]>({
-    query: `*[_type == "post"] | order(_createdAt asc){
+  const { data: posts } = await loadQuery<Post[]>({
+    query: `*[_type == "post"][0..3] | order(_createdAt asc){
       title,
       slug,
       mainImage,
@@ -37,7 +36,10 @@ const { data: projects } = await loadQuery<{ name: string; slug: { current: stri
 
 ---
 
-<Layout>
+<Layout
+title='Icone - Innovative Digital Solutions for Businesses'
+description='Icone is a startup that creates innovative digital solutions for businesses.'
+>
 	<div class="min-h-screen">
 		<Hero2/>
     <section class="pb-20  bg-white" id="insights">
