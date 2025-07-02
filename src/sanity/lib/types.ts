@@ -18,6 +18,11 @@ export type Project = {
   mainImage: { asset: SanityAsset };
   overview: string;
   tags: string[];
+  solutions: string;
+  challenges: string;
+  technologies: string[];
+  features: string[];
+  results: string[];
   status: string;
   publishedAt: string;
 };
