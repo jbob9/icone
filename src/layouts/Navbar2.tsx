@@ -16,7 +16,6 @@ const Navbar2 = () => {
 
       {/* Desktop menu */}
       <div className="hidden md:flex space-x-8 items-center">
-        
         <a
           href="#insights"
           className="text-sm font-medium hover:text-gray-500 transition-colors"
@@ -41,7 +40,10 @@ const Navbar2 = () => {
         >
           FAQ
         </a>
-        <a href="/contacts" className="rounded-full hover:border-gray-500 border border-neutral-600 text-black hover:bg-black/5 p-1.5">
+        <a
+          href="/contacts"
+          className="rounded-full hover:border-gray-500 border border-neutral-600 text-black hover:bg-black/5 p-1.5"
+        >
           Contacts <span className="ml-1">→</span>
         </a>
       </div>
@@ -69,43 +71,39 @@ const Navbar2 = () => {
               <X />
             </button>
             <a
-              href="#how-it-works"
+              href="/#insights"
               className="text-base font-medium hover:text-gray-500 transition-colors"
               onClick={handleClose}
             >
-              How it works
+              Insights
             </a>
             <a
-              href="#services"
+              href="/#projects"
               className="text-base font-medium hover:text-gray-500 transition-colors"
               onClick={handleClose}
             >
-              Service
+              Projects
             </a>
             <a
-              href="#clients"
+              href="/#innovation"
               className="text-base font-medium hover:text-gray-500 transition-colors"
               onClick={handleClose}
             >
-              Client
+              Innovation
             </a>
             <a
-              href="#contact"
-              className="text-base font-medium hover:text-gray-500 transition-colors"
-              onClick={handleClose}
-            >
-              Contact
-            </a>
-            <a
-              href="#faq"
+              href="/#faq"
               className="text-base font-medium hover:text-gray-500 transition-colors"
               onClick={handleClose}
             >
               FAQ
             </a>
-            <button className="rounded-full hover:border-gray-500 border border-neutral-600 text-black hover:bg-black/5 p-1.5">
-              Get Started <span className="ml-1">→</span>
-            </button>
+            <a
+              href="/contacts"
+              className="rounded-full hover:border-gray-500 border border-neutral-600 text-black hover:bg-black/5 p-1.5"
+            >
+              Contacts <span className="ml-1">→</span>
+            </a>
           </div>
         </div>
       )}

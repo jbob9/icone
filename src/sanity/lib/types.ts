@@ -13,6 +13,7 @@ export type Post = {
 
 export type Project = {
   name: string;
+  websiteUrl: string;
   slug: { current: string };
   logo: { asset: SanityAsset };
   mainImage: { asset: SanityAsset };
@@ -20,6 +21,7 @@ export type Project = {
   tags: string[];
   solutions: string;
   challenges: string;
+  gallery: { asset: SanityAsset }[];
   technologies: string[];
   features: string[];
   results: string[];
