@@ -9,8 +9,8 @@ import Services from "../../components/Services.astro";
 import Testimonials from "../../components/Testimonials.astro";
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Test Page" description="This is a test page.">
 
+<Layout title="Test Page" description="This is a test page.">
  <div class="min-h-screen bg-brand-dark text-brand-cream font-sans selection:bg-brand-yellow selection:text-brand-dark scroll-smooth">
       <Navbar />
       <main>
@@ -19,7 +19,7 @@ import Layout from '../../layouts/Layout.astro';
         <Services />
         <Portfolio />
         <Testimonials />
-        <FAQ />
+        <FAQ client:load/>
       </main>
       <Footer />
     </div>

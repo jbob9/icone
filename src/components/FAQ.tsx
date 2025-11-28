@@ -39,11 +39,11 @@ const FAQ: React.FC = () => {
 
   return (
     <section className="py-20 px-4 md:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
-      <div className="lg:col-span-4">
+      <div className="lg:col-span-5">
         <span className="text-brand-yellow font-bold uppercase text-xs tracking-widest mb-2 block">
           FAQs
         </span>
-        <h2 className="text-6xl md:text-8xl font-display uppercase text-brand-cream leading-none mb-8">
+        <h2 className="text-6xl font-display uppercase text-brand-cream leading-none mb-8 font-semibold">
           Have <br /> Questions?
         </h2>
         <div className="hidden lg:block p-6 bg-brand-green/30 rounded-2xl border border-white/5 backdrop-blur-sm">
@@ -56,11 +56,11 @@ const FAQ: React.FC = () => {
         </div>
       </div>
 
-      <div className="lg:col-span-8 space-y-4">
+      <div className="lg:col-span-7 space-y-4">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className={`rounded-2xl border transition-all duration-300 overflow-hidden ${openIndex === index ? "bg-brand-green border-brand-yellow" : "bg-transparent border-white/10 hover:border-white/30"}`}
+            className={`rounded-2xl border transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? "bg-brand-green border-brand-yellow" : "bg-transparent border-white/10 hover:border-white/30"}`}
           >
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
