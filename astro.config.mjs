@@ -3,6 +3,7 @@ import sanity from "@sanity/astro";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 import vercel from "@astrojs/vercel";
+import netlify from '@astrojs/netlify';
 
 export default defineConfig({
   site: 'https://www.iconeht.com/',
@@ -28,5 +29,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  adapter: vercel(),
+  adapter: netlify(),
 });
